@@ -1,0 +1,9 @@
+[prod]
+web 10.128.0.10
+DB 10.128.0.11
+App 10.128.0.12
+[prod:vars]
+ansible_connection=ssh
+ansible_ssh_user=vijay7498
+ansible_ssh_pass=Dhruv$9840
+

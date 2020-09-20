@@ -1,5 +1,5 @@
 ---
-- hosts: uk
+- hosts: web
   become: yes
   become_user: root
   roles:
