@@ -1,9 +1,9 @@
 [dev]
-web 10.128.0.13
-DB 10.128.0.14
-App 10.128.0.15
+web ansible_host=10.128.0.9
+DB ansible_host=10.128.0.14
+App ansible_host=10.128.0.15
 [dev:vars]
 ansible_connection=ssh
 ansible_ssh_user=vijay7498
-ansible_ssh_pass=Dhruv$9840
+ansible_ssh_pass=Zook@1rrtt
 
