@@ -1,0 +1,40 @@
+---
+ - name: Demo Web server
+   hosts: uk
+   become: yes
+   become_user: root
+   vars:
+     worker_con: 2020
+     server_port: 8099
+
+   tasks:
+     - name: "Install package"
+       yum:
+         name: nginx
+         state: latest
+
+     - name: "Open Port" 
+       firewalld:
+         service: http
+         permanent: yes
+         state: enabled  
+
+     - name: "Copy web content"
+       copy:
+         src: /devops_deployment/index.html
+         dest: /usr/share/nginx/html/index.html  
+       tags:
+       - copy_file
+
+     - name: "Apply config"
+       template:
+         src: /devops_deployment/nginx.conf.j2
+         dest: /etc/nginx/nginx.conf
+       notify:
+         - Start service
+
+   handlers:      
+     - name: "Start service"
+       service:
+         name: nginx
+         state: restarted 

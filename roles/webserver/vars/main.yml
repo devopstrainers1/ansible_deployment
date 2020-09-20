@@ -1,0 +1,10 @@
+---
+# vars file for webserver
+package_name: "httpd"
+service_port: "80/tcp"
+src_dir: "index.html"
+dest_dir: "/usr/share/nginx/html/index.html"
+src_config: "nginx.conf.j2"
+dest_config: "/etc/nginx/nginx.conf"
+worker_con: "1025"
+server_port: "80"

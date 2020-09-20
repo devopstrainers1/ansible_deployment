@@ -1,0 +1,26 @@
+---
+# tasks file for webserver
+ - name: "Install package"
+   yum:
+    name: "{{ package_name }}"
+    state: absent
+
+ - name: "Open Port" 
+   firewalld:
+    port: "{{ service_port }}"
+    permanent: yes
+    state: enabled  
+
+ - name: "Copy web content"
+   copy:
+    src: "{{ src_dir }}"
+    dest: "{{ dest_dir }}"
+   tags:
+   - copy_file
+
+ - name: "Apply config"
+   template:
+    src: "{{ src_config }}"
+    dest: "{{ dest_config }}"
+   notify:
+    - Start service
